@@ -8,14 +8,8 @@ const routes = require('./controllers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// hiding sess password
 require('dotenv').config();
-// const sequelize = new Sequelize(process.env.COOKIE_PW, {
-    //     host: 'localhost',
-    //     port: 3306,
-    //     dialect: 'mysql'
-    // });
-    
+
 // express-session
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);

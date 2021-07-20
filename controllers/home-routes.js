@@ -4,6 +4,7 @@ const { Post, User, Comment } = require('../models');
 
 // GET all posts with comments
 router.get('/', (req, res) => {
+    console.log(req.session);
     Post.findAll({
         attributes: [
             'id',
@@ -38,6 +39,10 @@ router.get('/', (req, res) => {
 
 // Render login
 router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
     res.render('login');
 });
 

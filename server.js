@@ -1,22 +1,27 @@
 const path = require('path');
 const express = require('express');
-const session = require('express-session');
-const exphbs = require('express-handlebars');
+const sequelize = require('./config/connection');
+
+require('dotenv').config();
+
 const helpers = require('./utils/helpers');
 
+// handlebars set up
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({ helpers });
+
+const session = require('express-session');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-require('dotenv').config();
-
 // express-session
-const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
     secret: process.env.COOKIE_PW,
     cookie: {},
+    resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize
@@ -24,17 +29,14 @@ const sess = {
 };
 
 app.use(session(sess));
-
-// handlebars set up
-const hbs = exphbs.create({ helpers });
-
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
 //express
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+// set handlebars as default temp engine
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // routes
 app.use(require('./controllers'));

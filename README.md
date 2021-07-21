@@ -15,7 +15,7 @@ ___
 ___
 
 ## Installation
-
+<!-- Current blog posts don't say username before time created//in comments section -->
 ___
 
 ## Usage

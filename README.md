@@ -16,6 +16,7 @@ ___
 
 ## Installation
 <!-- Current blog posts don't say username before time created//in comments section -->
+<!-- Edit post not working -->
 ___
 
 ## Usage

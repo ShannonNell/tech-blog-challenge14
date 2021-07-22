@@ -19,7 +19,9 @@ async function loginFormHandler(event) {
         } else {
             alert(response.statusText);
         }
-    }
+    } else {
+        alert('Your email or password is incorrect.');
+    };
 }
 
 async function signupFormHandler(event) {
@@ -42,9 +44,12 @@ async function signupFormHandler(event) {
         // check response status
         if (response.ok) {
             console.log('success');
+            document.location.replace('/dashboard');
         } else {
             alert(response.statusText);
         }
+    } else {
+        window.alert('You need to enter a valid username, email, and password');
     };
 };
 

@@ -7,22 +7,23 @@ body, html {
     padding: 0;
     margin: 0;
     font-family: sans-serif;
-    color: #333;
+    color: #2e3d3c;
+    background-color: #c6d9c0;
 }
 
 a {
   text-decoration: none;
-  color: #225ca3;
+  color: #c6d9c0;
   font-weight: bold;
   transition: color .1s;
 }
 
 a:hover {
-  color: #3486eb;
+  color: #65b89d;
 }
 
 button {
-  background-color: #225ca3;
+  background-color: #bf5f56;
   border: 0;
   padding: 1%;
   color: white;
@@ -33,12 +34,7 @@ button {
 }
 
 button:hover {
-  background-color: #3486eb;
-}
-
-.post-list {
-  margin: 0;
-  padding: 0;
+  background-color: #65b89d;
 }
 
 textarea, input {
@@ -79,11 +75,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1%;
+  padding: 2%;
+  background-color: #2E3D3C;
+
 }
 
 header h1 {
-  font-size: 1em;
+  font-size: 1.4em;
 }
 
 main {
@@ -97,7 +95,7 @@ main {
   padding: 0;
   cursor: pointer;
   text-decoration: none;
-  color: #225ca3;
+  color: #c6d9c0;
   font-size: 100%;
   font-weight: bold;
   transition: color .1s;
@@ -128,18 +126,28 @@ main {
   color: #7d7d7d;
 }
 
+.post h2 {
+  font-size: 120%;
+}
+
+.post .meta, 
+.edit-link {
+  opacity: 0.8;
+}
+
+.meta a, 
+.edit-link {
+  color: #bf5f56;
+}
+
+.meta a:hover,
+.edit-link:hover {
+  color: #65b89d;
+}
+
 .edit-link {
   display: block;
   margin: -1.5% 0 2% 0;
-}
-
-.upvote-btn {
-  background-color: #197d0f;
-  transition: background-color .1s;
-}
-
-.upvote-btn:hover {
-  background-color: #1f9c13;
 }
 
 .comment-form {
@@ -148,11 +156,12 @@ main {
 
 .comment {
   padding: 1%;
-  margin-bottom: 1%;
+  margin-bottom: 1%;  
 }
 
+
 .comment:nth-child(odd) {
-  background-color: #fff5eb;
+  background-color: rgba(191, 95, 86, 0.5);
 }
 
 .comment .meta {
@@ -160,6 +169,7 @@ main {
   margin-bottom: .5%;
   opacity: .6;
 }
+
 
 .new-post-form input {
   width: 300px;
@@ -169,10 +179,19 @@ main {
   margin-bottom: 5%;
 }
 
+li {
+  border: 2px solid #2e3d3c;
+  padding: 0% 2% 0% 3%;
+  margin: 10px;
+  list-style: none;
+}
+
 footer {
   border-top: 1px solid #ccc;
   display: flex;
   justify-content: center;
   padding: 1%;
   font-size: 110%;
+  background-color: #2E3D3C;
+  color: #c6d9c0;
 }

@@ -1,5 +1,5 @@
 # UoT Coding Challenge 14: Tech Blog
-A CMS-style blog site where developers can publish blog posts and comment on other developer's posts.
+A CMS-style blog site where developers can publish blog posts and comment on other developer's posts. This application follows the MVC paradigm in structure and uses Handlebars.js as the templating language, Sequalize as ORM, and express-session for authentication.
 
 Done as a challenge for UoT's Coding Bootcamp.
 ___
@@ -9,20 +9,16 @@ ___
 * [Usage](#usage)
 * [Links](#links)
 * [Tools](#tools)
+* [Tests](#tests)
 * [Credits](#credits)
 * [License](#license)
 * [Challenge Guidelines](#challenge-guidelines)
 ___
 
 ## Installation
-<!-- Current blog posts don't say username before time created//in comments section -->
-<!-- Edit post not working -->
-___
+Clone the repository from GitHub. This application's dependencies are: bcrypt, connect-session-sequelize, dotenv, express, express-handlebars, express-session, mysql2, and sequelize. To run the tests, install jest as well. 
 
-## Usage
- 
-
-![screenshotHere](/assets/images/)
+To connect to the database run `mysql -u root -p` and enter your password from your .env file. Then source the schema.sql by running `source db/schema.sql`. To connect to the server, run `npm start`.
 ___
 
 ## Links
@@ -30,8 +26,30 @@ ___
 
 ___
 
+## Usage
+This application allows users to log in or sign up to be able to post. Once logged in, they can view their dashboard to view, add, edit, and delete posts or comment on other users' posts.
+
+![screenshotHere](/assets/images/ch14_ss.png)
+![screenshotHere](/assets/images/ch14_ss2.png)
+___
+
+
 ## Tools
-* 
+* JavaScript
+* node.js
+* MySQL2
+* Express.js
+* Sequelize
+* dotenv
+* bcrypt
+* connect-session-sequelize
+* express-handlebars
+* express-session
+* HTML & CSS
+___
+
+## Tests
+Tests were made to format date and pluralize words. You can run these tests by running npm test in the command line.
 ___
 
 ## Credits

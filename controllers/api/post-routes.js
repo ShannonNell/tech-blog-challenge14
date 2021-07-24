@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
+const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET all users -> /api/posts
 router.get('/', (req, res) => {
     Post.findAll({
+        // THIS IS IN TWICE? (ORDER) =================================================
         order: [['created_at', 'DESC']],
         attributes: [
             'id',
@@ -76,21 +78,23 @@ router.get('/:id', (req, res) => {
 });
 
 // POST/create a post -> /api/posts
-router.post('/', (req, res) => {
-    Post.create({
-        title: req.body.title,
-        content: req.body.content,
-        user_id: req.body.user_id
-    })
-        .then(dbPostData => res.json(dbPostData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+router.post('/', withAuth, (req, res) => {
+    if(req.session) {
+        Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            user_id: req.session.user_id
+        })
+            .then(dbPostData => res.json(dbPostData))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    }
 });
 
 // PUT/update a post -> /api/posts/:id
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update(
         {
             title: req.body.title,
@@ -115,7 +119,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE/destroy a post -> /api/posts/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id

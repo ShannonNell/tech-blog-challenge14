@@ -6,8 +6,6 @@ const withAuth = require('../../utils/auth');
 // GET all users -> /api/posts
 router.get('/', (req, res) => {
     Post.findAll({
-        // THIS IS IN TWICE? (ORDER) =================================================
-        order: [['created_at', 'DESC']],
         attributes: [
             'id',
             'content',

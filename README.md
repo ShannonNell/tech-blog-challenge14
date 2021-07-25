@@ -22,7 +22,7 @@ To connect to the database run `mysql -u root -p` and enter your password from y
 ___
 
 ## Links
-* [Deployed App](link)
+* [Deployed App](https://secret-inlet-01236.herokuapp.com/)
 
 ___
 

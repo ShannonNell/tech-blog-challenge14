@@ -1,8 +1,9 @@
-const path = require('path');
 const express = require('express');
+const routes = require('./controllers')
 const sequelize = require('./config/connection');
+const path = require('path');
 
-require('dotenv').config();
+// require('dotenv').config();
 
 const helpers = require('./utils/helpers');
 
@@ -19,7 +20,7 @@ const PORT = process.env.PORT || 3001;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
-    secret: process.env.COOKIE_PW,
+    secret: "super super secret",
     cookie: {},
     resave: false,
     saveUninitialized: true,
@@ -39,7 +40,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 // routes
-app.use(require('./controllers'));
+app.use(routes);
 
 // listen
 sequelize.sync({force: false}).then ( () => {
